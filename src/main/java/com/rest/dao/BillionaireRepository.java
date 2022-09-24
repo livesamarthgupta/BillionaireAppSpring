@@ -4,10 +4,10 @@ import com.rest.model.Billionaire;
 
 import java.util.List;
 
-public interface BillionaireDao {
+public interface BillionaireRepository {
     List<Billionaire> getBillionaires();
     Billionaire getBillionaire(Long billionaireId);
-    int deleteBillionaire(Long billionaireId);
+    void deleteBillionaire(Long billionaireId);
     Billionaire updateBillionaire(Billionaire billionaire);
-    int createBillionaire(Billionaire billionaire);
+    void createBillionaire(Billionaire billionaire);
 }

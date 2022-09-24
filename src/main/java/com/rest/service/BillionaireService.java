@@ -9,8 +9,8 @@ public interface BillionaireService {
 
     List<Billionaire> listAll();
     Billionaire getBillionaire(Long billionaireId) throws BillionaireNotFoundException;
-    int createBillionaire(Billionaire billionaires);
+    void createBillionaire(Billionaire billionaires);
     Billionaire updateBillionaire(Billionaire billionaire) throws BillionaireNotFoundException;
-    int deleteBillionaire(Long billionaireId);
+    void deleteBillionaire(Long billionaireId);
 
 }
