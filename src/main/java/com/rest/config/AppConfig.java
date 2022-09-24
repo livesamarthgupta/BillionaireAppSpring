@@ -7,7 +7,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
 @Configuration
-@Import({DaoConfig.class, ServiceConfig.class, WebConfig.class})
+@Import({DaoConfig.class, ServiceConfig.class, WebConfig.class, ExceptionConfig.class})
 public class AppConfig {
     public AppConfig() {
         super();
