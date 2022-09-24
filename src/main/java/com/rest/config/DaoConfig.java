@@ -20,7 +20,7 @@ import java.util.Properties;
 public class DaoConfig {
     @Bean
     public DataSource getDataSource(@Value("${datasource.schema}") String schema, @Value("${datasource.script}") String script) {
-        String jdbcUrl = String.format("jdbc:h2:mem:test;INIT=runscript from '%s'", script);
+        String jdbcUrl = String.format("jdbc:h2:mem:%s;INIT=runscript from '%s'", schema, script);
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName("org.h2.Driver");
         hikariConfig.setJdbcUrl(jdbcUrl);
