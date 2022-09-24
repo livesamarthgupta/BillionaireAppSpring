@@ -33,7 +33,7 @@ public class BillionaireController {
     }
 
     @PostMapping(path = "billionaire", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> saveBillionaire(Billionaire billionaire) {
+    public ResponseEntity<String> saveBillionaire(@RequestBody Billionaire billionaire) {
         logger.info("Requested to save billionaire: {}", billionaire);
         billionaireService.createBillionaire(billionaire);
         return ResponseEntity.ok().body("Billionaire Created Successfully.");

@@ -37,7 +37,7 @@ public class BillionaireDaoImpl implements BillionaireDao {
     @Override
     public Billionaire updateBillionaire(Billionaire billionaire) {
         String sql = "UPDATE billionaires SET first_name = ?, last_name = ?, company = ?, wealth = ? WHERE id = ?;";
-        jdbcTemplate.update(sql, billionaire.getFirstName(), billionaire.getLastName(), billionaire.getCompany(), billionaire.getWealth());
+        jdbcTemplate.update(sql, billionaire.getFirstName(), billionaire.getLastName(), billionaire.getCompany(), billionaire.getWealth(), billionaire.getId());
         return getBillionaire(billionaire.getId());
     }
 
