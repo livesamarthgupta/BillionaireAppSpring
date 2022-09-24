@@ -7,11 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = "com.rest.dao")
+@EnableTransactionManagement
 public class DaoConfig {
     @Bean
     public DataSource getDataSource(@Value("${datasource.dbname}") String dbname, @Value("${datasource.script}") String script) {
