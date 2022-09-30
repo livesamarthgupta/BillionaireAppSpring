@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -16,6 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "com.rest.dao")
+@EnableJpaRepositories(basePackages = "com.rest.dao")
 @EnableTransactionManagement
 public class DaoConfig {
     @Bean
@@ -30,7 +32,7 @@ public class DaoConfig {
         return new HikariDataSource(hikariConfig);
     }
 
-    @Bean
+    @Bean(name = "entityManagerFactory")    // Spring Data JPA by default looks for an EntityManagerFactory named entityManagerFactory. Check: https://stackoverflow.com/questions/24520602/spring-data-jpa-no-bean-named-entitymanagerfactory-is-defined-injection-of-a
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
@@ -42,7 +44,7 @@ public class DaoConfig {
         return entityManagerFactoryBean;
     }
 
-    @Bean
+    @Bean(name = "transactionManager")  // Spring Data JPA by default looks for an TransactionManager named transactionManager. Check: https://stackoverflow.com/questions/24520602/spring-data-jpa-no-bean-named-entitymanagerfactory-is-defined-injection-of-a
     public PlatformTransactionManager getTransactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
