@@ -5,9 +5,3 @@ CREATE TABLE billionaires (
   company VARCHAR(250) DEFAULT NULL,
   wealth VARCHAR(250) DEFAULT NULL
 );
-
-INSERT INTO billionaires (first_name, last_name, company, wealth) VALUES
-  ('Mukesh', 'Ambani', 'Reliance','$64.4 B'),
-  ('Jeff', 'Bezos', 'Amazon','$166.3 B'),
-  ('Bill', 'Gates', 'Microsoft','$109.9 B'),
-  ('Mark', 'Zuckerberg', 'Facebook','$85.4 B');
