@@ -41,15 +41,15 @@ public class InitializeDatabase implements InitializingBean {
 
     private void fillDatabaseDuringStartup() throws IOException {
         List<Billionaire> billionaireList = new ArrayList<>();
-        final ResponseEntity<String> forbed400ResponseEntity =
+        final ResponseEntity<String> forbes400ResponseEntity =
                 restTemplate.getForEntity(properties.buildEndPoint(), String.class);
 
-        if(!forbed400ResponseEntity.getStatusCode().is2xxSuccessful()) {
+        if(!forbes400ResponseEntity.getStatusCode().is2xxSuccessful()) {
             throw new InitializationFailedException();
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        final JsonNode jsonNode = objectMapper.readTree(forbed400ResponseEntity.getBody());
+        final JsonNode jsonNode = objectMapper.readTree(forbes400ResponseEntity.getBody());
         if(jsonNode.isArray()) {
             for(JsonNode eachBillionaire : jsonNode) {
                 Billionaire newEntry = new Billionaire();
